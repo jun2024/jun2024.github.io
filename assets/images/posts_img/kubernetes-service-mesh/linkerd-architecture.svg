@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="520" height="420" rx="12" fill="#1a1a2e"/>
+
+  <!-- Title -->
+  <text x="260" y="35" text-anchor="middle" fill="#e0e0e0" font-size="18" font-weight="bold">Linkerd Architecture</text>
+
+  <!-- Control Plane Box -->
+  <rect x="40" y="55" width="440" height="120" rx="10" fill="#2d6a4f" opacity="0.15" stroke="#52b788" stroke-width="1.5"/>
+  <text x="260" y="80" text-anchor="middle" fill="#95d5b2" font-size="14" font-weight="bold">Control Plane</text>
+
+  <!-- Control Plane Components -->
+  <rect x="65" y="95" width="120" height="55" rx="6" fill="#2a2a4a" stroke="#52b788" stroke-width="1" filter="url(#shadow)"/>
+  <text x="125" y="118" text-anchor="middle" fill="#b7e4c7" font-size="12" font-weight="bold">destination</text>
+  <text x="125" y="137" text-anchor="middle" fill="#7a9a88" font-size="10">Service Discovery</text>
+
+  <rect x="200" y="95" width="120" height="55" rx="6" fill="#2a2a4a" stroke="#52b788" stroke-width="1" filter="url(#shadow)"/>
+  <text x="260" y="118" text-anchor="middle" fill="#b7e4c7" font-size="12" font-weight="bold">identity</text>
+  <text x="260" y="137" text-anchor="middle" fill="#7a9a88" font-size="10">mTLS Certs</text>
+
+  <rect x="335" y="95" width="120" height="55" rx="6" fill="#2a2a4a" stroke="#52b788" stroke-width="1" filter="url(#shadow)"/>
+  <text x="395" y="118" text-anchor="middle" fill="#b7e4c7" font-size="12" font-weight="bold">proxy-injector</text>
+  <text x="395" y="137" text-anchor="middle" fill="#7a9a88" font-size="10">Sidecar Inject</text>
+
+  <!-- Arrow -->
+  <line x1="260" y1="175" x2="260" y2="215" stroke="#52b788" stroke-width="2" stroke-dasharray="6,3"/>
+  <polygon points="254,211 260,223 266,211" fill="#52b788"/>
+
+  <!-- Data Plane Box -->
+  <rect x="40" y="225" width="440" height="155" rx="10" fill="#3a86a0" opacity="0.1" stroke="#48bfe3" stroke-width="1.5"/>
+  <text x="260" y="250" text-anchor="middle" fill="#89c2d9" font-size="14" font-weight="bold">Data Plane</text>
+
+  <!-- Pod -->
+  <rect x="100" y="265" width="320" height="95" rx="8" fill="#2a2a4a" stroke="#555580" stroke-width="1" filter="url(#shadow)"/>
+  <text x="260" y="290" text-anchor="middle" fill="#d0d0e0" font-size="13" font-weight="bold">Pod</text>
+
+  <rect x="125" y="300" width="120" height="40" rx="6" fill="#3a5a8a" stroke="#5a8aba" stroke-width="1"/>
+  <text x="185" y="325" text-anchor="middle" fill="#e0e8f0" font-size="13">App</text>
+
+  <!-- Bidirectional Arrow -->
+  <line x1="245" y1="320" x2="275" y2="320" stroke="#f5a623" stroke-width="2"/>
+  <polygon points="271,315 281,320 271,325" fill="#f5a623"/>
+  <polygon points="249,315 239,320 249,325" fill="#f5a623"/>
+
+  <rect x="280" y="300" width="120" height="40" rx="6" fill="#1b4332" stroke="#40916c" stroke-width="1"/>
+  <text x="340" y="325" text-anchor="middle" fill="#b7e4c7" font-size="13">linkerd2-proxy</text>
+
+  <!-- Highlight: Lightweight -->
+  <rect x="100" y="388" width="320" height="22" rx="4" fill="#2a2a4a" stroke="#555580" stroke-width="0.5"/>
+  <text x="260" y="403" text-anchor="middle" fill="#7a9a88" font-size="11">Rust-based ultra-lightweight proxy (~10-20MB memory)</text>
+
+  <!-- Legend -->
+  <rect x="40" y="398" width="8" height="8" rx="2" fill="#52b788"/>
+  <text x="54" y="406" fill="#7a9a88" font-size="9">Control</text>
+  <rect x="40" y="386" width="0" height="0"/>
+</svg>

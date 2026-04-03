@@ -16,7 +16,7 @@ date: 2026-04-03
 last_modified_at: 2026-04-03
 ---
 
-> 이 포스트는 [K8s 네트워크 핵심 개념 완벽 정리](https://jun2024.github.io/kubernetes/kubernetes-network/)의 서비스 메시 파트를 심화한 내용이에요.
+> 이 포스트는 [K8s 네트워크 핵심 개념 완벽 정리](/_posts/2026-04-01-kubernetes-network.md)의 서비스 메시 파트를 심화한 내용이에요.
 > 기본 개념이 궁금하다면 이전 포스트를 먼저 읽고 오는 걸 추천해요!
 
 ---
@@ -40,33 +40,7 @@ last_modified_at: 2026-04-03
 
 Istio는 **컨트롤 플레인**과 **데이터 플레인**으로 나뉘어요.
 
-```
-┌─────────────────────────────────────────────┐
-│                Control Plane                 │
-│  ┌─────────────────────────────────────────┐ │
-│  │              istiod                      │ │
-│  │  (Pilot + Citadel + Galley 통합)        │ │
-│  │  · 서비스 디스커버리                      │ │
-│  │  · 인증서 관리 (mTLS)                    │ │
-│  │  · 설정 배포                             │ │
-│  └─────────────────────────────────────────┘ │
-└─────────────────────────────────────────────┘
-         │ xDS API (설정 푸시)
-         ▼
-┌─────────────────────────────────────────────┐
-│                Data Plane                    │
-│                                             │
-│  ┌─────────┐    ┌─────────┐    ┌─────────┐ │
-│  │ Pod A    │    │ Pod B    │    │ Pod C    │ │
-│  │┌───────┐│    │┌───────┐│    │┌───────┐│ │
-│  ││ App   ││    ││ App   ││    ││ App   ││ │
-│  │└───┬───┘│    │└───┬───┘│    │└───┬───┘│ │
-│  │┌───▼───┐│    │┌───▼───┐│    │┌───▼───┐│ │
-│  ││ Envoy ││◄──►││ Envoy ││◄──►││ Envoy ││ │
-│  │└───────┘│    │└───────┘│    │└───────┘│ │
-│  └─────────┘    └─────────┘    └─────────┘ │
-└─────────────────────────────────────────────┘
-```
+![Istio Architecture](/assets/images/posts_img/kubernetes-service-mesh/istio-architecture.svg)
 
 **istiod**가 모든 컨트롤 플레인 역할을 통합하고, 각 Pod의 **Envoy** 사이드카에 설정을 푸시해요. Envoy가 실제 트래픽을 가로채서 정책을 적용하는 구조예요.
 
@@ -173,24 +147,7 @@ istioctl x waypoint apply --namespace default --enroll-namespace
 
 Linkerd는 Istio보다 훨씬 심플한 구조예요.
 
-```
-┌──────────────────────────┐
-│      Control Plane        │
-│  · destination (디스커버리)│
-│  · identity (mTLS 인증서) │
-│  · proxy-injector         │
-└──────────────────────────┘
-         │
-         ▼
-┌──────────────────────────┐
-│       Data Plane          │
-│  ┌────────────────────┐  │
-│  │ Pod                 │  │
-│  │ [App] ↔ [linkerd2  │  │
-│  │         -proxy]     │  │
-│  └────────────────────┘  │
-└──────────────────────────┘
-```
+![Linkerd Architecture](/assets/images/posts_img/kubernetes-service-mesh/linkerd-architecture.svg)
 
 핵심 차이는 프록시예요. Envoy 대신 Rust로 작성된 **linkerd2-proxy**를 사용하는데, 메모리 약 10~20MB, CPU도 최소한으로 소비해요.
 
@@ -244,15 +201,7 @@ spec:
 
 Cilium은 다른 서비스 메시와 근본적으로 다른 접근을 해요. 사이드카 프록시 대신 **eBPF**를 사용해서 Linux 커널 레벨에서 직접 네트워킹을 처리해요.
 
-```
-전통적 서비스 메시 (Istio/Linkerd):
-  App → Sidecar Proxy → Kernel → Network → Kernel → Sidecar Proxy → App
-
-Cilium (eBPF 기반):
-  App → Kernel(eBPF) → Network → Kernel(eBPF) → App
-
-  네트워크 스택 홉이 줄어들어 지연 시간 대폭 감소!
-```
+![Cilium vs Traditional Service Mesh](/assets/images/posts_img/kubernetes-service-mesh/cilium-architecture.svg)
 
 ### 실전: L7 트래픽 정책 (HTTP/Kafka 프로토콜 인식)
 
@@ -323,21 +272,7 @@ spec:
 
 Consul의 가장 큰 차별점은 **K8s 밖의 워크로드**도 동일한 메시에 포함시킬 수 있다는 거예요. VM에서 돌아가는 레거시 서비스와 K8s의 마이크로서비스가 하나의 메시로 통합돼요.
 
-```
-┌─────────────────────────────────────────────────┐
-│               Consul Service Mesh                │
-│                                                  │
-│  ┌──────────────┐  ┌──────────────────────────┐ │
-│  │  Kubernetes   │  │    VM / Bare Metal        │ │
-│  │              │  │                          │ │
-│  │  [Pod]       │  │  [Legacy App]            │ │
-│  │  [Envoy]    │  │  [Consul Agent + Envoy]  │ │
-│  └──────────────┘  └──────────────────────────┘ │
-│          │                    │                   │
-│          └────── Consul Server ──────┘           │
-│                  (서비스 레지스트리)               │
-└─────────────────────────────────────────────────┘
-```
+![Consul Connect Architecture](/assets/images/posts_img/kubernetes-service-mesh/consul-architecture.svg)
 
 ### 실전: K8s + VM 하이브리드 메시 구성
 

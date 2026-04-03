@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+    <linearGradient id="cpGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#667eea"/>
+      <stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+    <linearGradient id="dpGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f093fb"/>
+      <stop offset="100%" stop-color="#f5576c"/>
+    </linearGradient>
+    <linearGradient id="podGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f0f0f5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="720" height="520" rx="12" fill="#1a1a2e"/>
+
+  <!-- Title -->
+  <text x="360" y="35" text-anchor="middle" fill="#e0e0e0" font-size="18" font-weight="bold">Istio Architecture</text>
+
+  <!-- Control Plane Box -->
+  <rect x="40" y="55" width="640" height="150" rx="10" fill="url(#cpGrad)" opacity="0.15" stroke="#667eea" stroke-width="1.5"/>
+  <text x="360" y="80" text-anchor="middle" fill="#a0b4f0" font-size="14" font-weight="bold">Control Plane</text>
+
+  <!-- istiod Box -->
+  <rect x="160" y="92" width="400" height="100" rx="8" fill="#2a2a4a" stroke="#667eea" stroke-width="1" filter="url(#shadow)"/>
+  <text x="360" y="118" text-anchor="middle" fill="#c0d0ff" font-size="16" font-weight="bold">istiod</text>
+  <text x="360" y="140" text-anchor="middle" fill="#8899bb" font-size="11">(Pilot + Citadel + Galley)</text>
+  <text x="220" y="170" fill="#9aabb8" font-size="11">Service Discovery</text>
+  <text x="360" y="170" text-anchor="middle" fill="#9aabb8" font-size="11">mTLS Certs</text>
+  <text x="490" y="170" fill="#9aabb8" font-size="11">Config Push</text>
+
+  <!-- Arrow from Control to Data -->
+  <line x1="360" y1="205" x2="360" y2="250" stroke="#667eea" stroke-width="2" stroke-dasharray="6,3"/>
+  <polygon points="354,246 360,258 366,246" fill="#667eea"/>
+  <text x="380" y="233" fill="#8899bb" font-size="10">xDS API</text>
+
+  <!-- Data Plane Box -->
+  <rect x="40" y="260" width="640" height="220" rx="10" fill="url(#dpGrad)" opacity="0.08" stroke="#f5576c" stroke-width="1.5"/>
+  <text x="360" y="285" text-anchor="middle" fill="#f0a0b0" font-size="14" font-weight="bold">Data Plane</text>
+
+  <!-- Pod A -->
+  <rect x="70" y="300" width="170" height="160" rx="8" fill="#2a2a4a" stroke="#555580" stroke-width="1" filter="url(#shadow)"/>
+  <text x="155" y="322" text-anchor="middle" fill="#d0d0e0" font-size="13" font-weight="bold">Pod A</text>
+  <rect x="95" y="335" width="120" height="35" rx="6" fill="#3a5a8a" stroke="#5a8aba" stroke-width="1"/>
+  <text x="155" y="357" text-anchor="middle" fill="#e0e8f0" font-size="12">App</text>
+  <line x1="155" y1="370" x2="155" y2="390" stroke="#8899bb" stroke-width="1.5"/>
+  <polygon points="150,387 155,395 160,387" fill="#8899bb"/>
+  <rect x="95" y="398" width="120" height="35" rx="6" fill="#5a3a7a" stroke="#8a5ab0" stroke-width="1"/>
+  <text x="155" y="420" text-anchor="middle" fill="#e0d0f0" font-size="12">Envoy</text>
+
+  <!-- Pod B -->
+  <rect x="275" y="300" width="170" height="160" rx="8" fill="#2a2a4a" stroke="#555580" stroke-width="1" filter="url(#shadow)"/>
+  <text x="360" y="322" text-anchor="middle" fill="#d0d0e0" font-size="13" font-weight="bold">Pod B</text>
+  <rect x="300" y="335" width="120" height="35" rx="6" fill="#3a5a8a" stroke="#5a8aba" stroke-width="1"/>
+  <text x="360" y="357" text-anchor="middle" fill="#e0e8f0" font-size="12">App</text>
+  <line x1="360" y1="370" x2="360" y2="390" stroke="#8899bb" stroke-width="1.5"/>
+  <polygon points="355,387 360,395 365,387" fill="#8899bb"/>
+  <rect x="300" y="398" width="120" height="35" rx="6" fill="#5a3a7a" stroke="#8a5ab0" stroke-width="1"/>
+  <text x="360" y="420" text-anchor="middle" fill="#e0d0f0" font-size="12">Envoy</text>
+
+  <!-- Pod C -->
+  <rect x="480" y="300" width="170" height="160" rx="8" fill="#2a2a4a" stroke="#555580" stroke-width="1" filter="url(#shadow)"/>
+  <text x="565" y="322" text-anchor="middle" fill="#d0d0e0" font-size="13" font-weight="bold">Pod C</text>
+  <rect x="505" y="335" width="120" height="35" rx="6" fill="#3a5a8a" stroke="#5a8aba" stroke-width="1"/>
+  <text x="565" y="357" text-anchor="middle" fill="#e0e8f0" font-size="12">App</text>
+  <line x1="565" y1="370" x2="565" y2="390" stroke="#8899bb" stroke-width="1.5"/>
+  <polygon points="560,387 565,395 570,387" fill="#8899bb"/>
+  <rect x="505" y="398" width="120" height="35" rx="6" fill="#5a3a7a" stroke="#8a5ab0" stroke-width="1"/>
+  <text x="565" y="420" text-anchor="middle" fill="#e0d0f0" font-size="12">Envoy</text>
+
+  <!-- Envoy-to-Envoy Arrows -->
+  <line x1="215" y1="415" x2="300" y2="415" stroke="#f5a623" stroke-width="2"/>
+  <polygon points="296,410 306,415 296,420" fill="#f5a623"/>
+  <polygon points="220,410 210,415 220,420" fill="#f5a623"/>
+  <line x1="420" y1="415" x2="505" y2="415" stroke="#f5a623" stroke-width="2"/>
+  <polygon points="501,410 511,415 501,420" fill="#f5a623"/>
+  <polygon points="425,410 415,415 425,420" fill="#f5a623"/>
+
+  <!-- Legend -->
+  <rect x="40" y="490" width="10" height="10" rx="2" fill="#667eea"/>
+  <text x="56" y="500" fill="#8899bb" font-size="10">Control Plane</text>
+  <rect x="160" y="490" width="10" height="10" rx="2" fill="#f5576c"/>
+  <text x="176" y="500" fill="#8899bb" font-size="10">Data Plane</text>
+  <rect x="280" y="490" width="10" height="10" rx="2" fill="#f5a623"/>
+  <text x="296" y="500" fill="#8899bb" font-size="10">mTLS Traffic</text>
+</svg>
