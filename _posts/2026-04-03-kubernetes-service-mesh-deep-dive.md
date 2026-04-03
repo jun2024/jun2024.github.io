@@ -12,8 +12,8 @@ permalink: /kubernetes/kubernetes-service-mesh-deep-dive/
 toc: true
 toc_sticky: true
 
-date: 2026-04-04
-last_modified_at: 2026-04-04
+date: 2026-04-03
+last_modified_at: 2026-04-03
 ---
 
 > 이 포스트는 [K8s 네트워크 핵심 개념 완벽 정리](https://jun2024.github.io/kubernetes/kubernetes-network/)의 서비스 메시 파트를 심화한 내용이에요.
