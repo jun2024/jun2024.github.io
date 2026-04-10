@@ -17,7 +17,7 @@ last_modified_at: 2026-04-06
 ---
 
 > 이 포스트는 [K8s 스케줄링 완벽 정리 (1)](/kubernetes/kubernetes-scheduling-1/)에 이어지는 내용이에요.
-> 이전 포스트에서 Manual Scheduling, Labels, Taints/Tolerations, Node Affinity를 다뤘으니 먼저 읽고 오는 걸 추천해요!
+> 이전 포스트에서 Manual Scheduling, Labels, Taints/Tolerations, Node Affinity를 다뤘으니 먼저 읽고 오는 걸 추천해요.
 
 ---
 
