@@ -349,3 +349,6 @@ _문의사항 또는 수정 요청은 블로그에 댓글 남겨주시거나 이
 
 [VER2.1]
 ![choiiis github blog main](/assets/images/posts_img/readme/ver2_1_main.png)
+
+### 특이 사항
+- ASCII Art는 Table로 대체 하거나 이미지로 생성해서 작성
