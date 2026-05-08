@@ -12,8 +12,8 @@ permalink: /kubernetes/kubernetes-security-3/
 toc: true
 toc_sticky: true
 
-date: 2026-05-03
-last_modified_at: 2026-05-03
+date: 2026-05-11
+last_modified_at: 2026-05-11
 ---
 
 > 이전 포스트 [K8s 보안 (2)](/kubernetes/kubernetes-security-2/)에서 TLS 구조와 인증서 관리를 다뤘어요.

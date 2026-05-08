@@ -12,8 +12,8 @@ permalink: /kubernetes/kubernetes-security-4/
 toc: true
 toc_sticky: true
 
-date: 2026-05-04
-last_modified_at: 2026-05-04
+date: 2026-05-12
+last_modified_at: 2026-05-12
 ---
 
 > 이전 포스트 [K8s 보안 (3)](/kubernetes/kubernetes-security-3/)에서 KubeConfig, API Groups, RBAC를 다뤘어요.

@@ -12,8 +12,8 @@ permalink: /kubernetes/kubernetes-security-1/
 toc: true
 toc_sticky: true
 
-date: 2026-05-01
-last_modified_at: 2026-05-01
+date: 2026-05-07
+last_modified_at: 2026-05-07
 ---
 
 > 이 포스트는 [KodeKloud CKA 코스](https://github.com/kodekloudhub/certified-kubernetes-administrator-course)의 Security 섹션을 기반으로 정리한 내용이에요.

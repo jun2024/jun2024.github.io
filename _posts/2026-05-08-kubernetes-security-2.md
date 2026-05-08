@@ -12,8 +12,8 @@ permalink: /kubernetes/kubernetes-security-2/
 toc: true
 toc_sticky: true
 
-date: 2026-05-02
-last_modified_at: 2026-05-02
+date: 2026-05-08
+last_modified_at: 2026-05-08
 ---
 
 > 이전 포스트 [K8s 보안 (1)](/kubernetes/kubernetes-security-1/)에서 Security Primitives, Authentication, TLS 기초를 다뤘어요.
